@@ -25,7 +25,7 @@ snippet ndef "ifndef...define...endif"
 	#define ${1:SYMBOL} ${2:value}
 	#endif /* ifndef $1 */
 # define
-snippet def
+snippet def "define"
 	#define
 # ifdef...endif
 snippet ifdef
@@ -64,24 +64,24 @@ snippet if
 	if (${1:true}) {
 		${0:${VISUAL}}
 	}
-snippet ife
+snippet ife "if .. else"
 	if (${1:true}) {
 		${2:${VISUAL}}
 	} else {
 		${0}
 	}
 # else
-snippet el
+snippet el "else"
 	else {
 		${0:${VISUAL}}
 	}
 # else if
-snippet elif
+snippet elif "else if"
 	else if (${1:true}) {
 		${0:${VISUAL}}
 	}
 # ifi
-snippet ifi
+snippet ifi "if (oneline)"
 	if (${1:true}) ${0};
 # ternary
 snippet t Ternary: `condition ? true : false`
@@ -124,35 +124,35 @@ snippet forr
 		${5}
 	}
 # while
-snippet wh
+snippet wh "while"
 	while (${1:1}) {
 		${0:${VISUAL}}
 	}
-snippet wht
+snippet wht "while true"
 	while (true) {
 		${0:${VISUAL}}
 	}
 # do... while
-snippet do
+snippet do "do ... while"
 	do {
 		${0:${VISUAL}}
 	} while ($1);
 ##
 ## Functions
 # function definition
-snippet fun
+snippet fun "function/method definition"
 	${1:void} ${2:function_name}(${3})
 	{
 		${4}
 	}
 # function definition with zero parameters
-snippet fun0
+snippet fun0 "function/method definition with zero parameters"
 	${1:void} ${2:function_name}()
 	{
 		${3}
 	}
 # function definition with Doxygen documentation
-snippet dfun0
+snippet dfun0 "function/method definition with Doxygen documentation"
 	/*! \brief ${1:Brief function description here}
 	 *
 	 *  ${2:Detailed description of the function}
@@ -164,13 +164,13 @@ snippet dfun0
 		${6}
 	}
 # function definition with one parameter
-snippet fun1
+snippet fun1 "function/method definition with one parameter"
 	${1:void} ${2:function_name}(${3:Type} ${4:Parameter})
 	{
 		${5}
 	}
 # function definition with one parameter with  Doxygen documentation
-snippet dfun1
+snippet dfun1 "function definition with one parameter with  Doxygen documentation"
 	/*! \brief ${1:Brief function description here}
 	 *
 	 *  ${2:Detailed description of the function}
@@ -183,13 +183,13 @@ snippet dfun1
 		${9}
 	}
 # function definition with two parameters
-snippet fun2
+snippet fun2 "function definition with two parameters"
 	${1:void} ${2:function_name}(${3:Type} ${4:Parameter}, ${5:Type} ${6:Parameter})
 	{
 		${7}
 	}
 # function definition with two parameters with  Doxygen documentation
-snippet dfun2
+snippet dfun2 "function definition with two parameters with  Doxygen documentation"
 	/*! \brief ${1:Brief function description here}
 	 *
 	 *  ${2:Detailed description of the function}
@@ -203,13 +203,13 @@ snippet dfun2
 		${12}
 	}
 # function definition with three parameters
-snippet fun3
+snippet fun3 "function definition with three parameters"
 	${1:void} ${2:function_name}(${3:Type} ${4:Parameter}, ${5:Type} ${6:Parameter}, ${7:Type} ${8:Parameter})
 	{
 		${9}
 	}
 # function definition with three parameters with  Doxygen documentation
-snippet dfun3
+snippet dfun3 "function definition with three parameters with  Doxygen documentation"
 	/*! \brief ${1:Brief function description here}
 	 *
 	 *  ${2:Detailed description of the function}
@@ -224,7 +224,7 @@ snippet dfun3
 		${15}
 	}
 # function declaration
-snippet fund
+snippet fund "function declaration"
 	${1:void} ${2:function_name}(${3});
 ##
 ## Types
@@ -233,53 +233,35 @@ snippet td "typedef"
 	typedef ${1:int} ${2:MyCustomType};
 # struct
 snippet st "struct"
-	/*! \struct $1
-	 *  \brief ${3:Brief struct description}
-	 *
-	 *  ${4:Detailed description}
-	 */
 	struct ${1:`vim_snippets#Filename('$1_t', 'name')`} {
 		${2:Data} /*!< ${4:Description} */
 	}${5: /* optional variable list */};
 # typedef struct
 snippet tds "typedef struct"
-	/*! \struct $2
-	 *  \brief ${5:Brief struct description}
-	 *
-	 *  ${6:Detailed description}
-	 */
 	typedef struct ${2:_$1 }{
 		m_${3:Data} /*!< ${4:Description} */
 	} ${1:`vim_snippets#Filename('$1_t', 'name')`};
 
 snippet enum
-	/*! \enum $1
-	 *
-	 *  ${2:Detailed description}
-	 */
 	enum ${1:name} { ${0} };
 # typedef enum
 snippet tde "typedef enum"
-	/*! \enum $2
-	 *
-	 *  ${4:Detailed description}
-	 */
 	typedef enum {
 		${1:Data} /*!< ${3:Description} */
 	} ${2:foo};
 ##
 ## Input/Output
 # printf
-snippet pr
+snippet pr "printf"
 	printf("${1:%s}\n"${2});
 # fprintf (again, this isn't as nice as TextMate's version, but it works)
-snippet fpr
+snippet fpr "fprintf"
 	fprintf(${1:stderr}, "${2:%s}\n"${3});
-snippet prd
+snippet prd "printf int"
 	printf("${1:} = %d\n", $1);
-snippet prf
+snippet prf "printf float"
 	printf("${1:} = %f\n", $1);
-snippet prx
+snippet prx "printf any"
 	printf("${1:} = %${2}\n", $1);
 snippet warn
 	warn("${1:%s}"$0);
