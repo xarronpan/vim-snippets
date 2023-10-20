@@ -18,64 +18,68 @@ snippet binc
 ##
 ## STL Collections
 # std::array
-snippet array
+snippet array "std::array"
 	std::array<${1:T}, ${2:N}> ${3};
 # std::vector
-snippet vector
+snippet vector "std::vector"
 	std::vector<${1:T}> ${2};
 # std::deque
-snippet deque
+snippet deque "std::deque"
 	std::deque<${1:T}> ${2};
 # std::forward_list
-snippet flist
+snippet flist "std::forward_list"
 	std::forward_list<${1:T}> ${2};
 # std::list
-snippet list
+snippet list "std::list"
 	std::list<${1:T}> ${2};
 # std::set
-snippet set
+snippet set "std::set"
 	std::set<${1:T}> ${2};
 # std::map
-snippet map
+snippet map "std::map"
 	std::map<${1:Key}, ${2:T}> ${3};
 # std::multiset
-snippet mset
+snippet mset "std::multiset"
 	std::multiset<${1:T}> ${2};
 # std::multimap
-snippet mmap
+snippet mmap "std::multimap"
 	std::multimap<${1:Key}, ${2:T}> ${3};
 # std::unordered_set
-snippet uset
+snippet uset ""std::unordered_set
 	std::unordered_set<${1:T}> ${2};
 # std::unordered_map
-snippet umap
+snippet umap "std::unordered_map"
 	std::unordered_map<${1:Key}, ${2:T}> ${3};
 # std::unordered_multiset
-snippet umset
+snippet umset "std::unordered_multiset"
 	std::unordered_multiset<${1:T}> ${2};
 # std::unordered_multimap
-snippet ummap
+snippet ummap "std::unordered_multimap"
 	std::unordered_multimap<${1:Key}, ${2:T}> ${3};
 # std::stack
-snippet stack
+snippet stack "std::stack"
 	std::stack<${1:T}> ${2};
 # std::queue
-snippet queue
+snippet queue "std::queue"
 	std::queue<${1:T}> ${2};
 # std::priority_queue
-snippet pqueue
+snippet pqueue "std::priority_queue"
 	std::priority_queue<${1:T}> ${2};
 ##
 ## STL smart pointers
 # std::shared_ptr
-snippet msp
+snippet sp "std::shared_ptr var"
+	std::shared_ptr<${1:T}> ${2};
+snippet msp "make std::shared_ptr var"
 	std::shared_ptr<${1:T}> ${2} = std::make_shared<$1>(${3});
-snippet amsp
+snippet amsp "make std::shared_ptr auto var"
 	auto ${1} = std::make_shared<${2:T}>(${3});
 # std::unique_ptr
-snippet mup
+snippet up "std::unique_ptr var"
+	std::unique_ptr<${1:T}> ${2};
+snippet mup "make std::unique_ptr var"
 	std::unique_ptr<${1:T}> ${2} = std::make_unique<$1>(${3});
-snippet amup
+snippet amup "make std::unique_ptr auto var"
 	auto ${1} = std::make_unique<${2:T}>(${3});
 ##
 ## Access Modifiers
@@ -154,11 +158,11 @@ snippet dmfun2
 		${0}
 	}
 # namespace
-snippet ns
+snippet ns "namespace"
 	namespace ${1:`vim_snippets#Filename('', 'my')`} {
 		${0}
 	} /* namespace $1 */
-snippet ans
+snippet ans "anonymous name space"
 	namespace {
 		${0}
 	}
@@ -173,16 +177,16 @@ snippet cin
 ##
 ## Casts
 # static
-snippet sca
+snippet sca "static_cast"
 	static_cast<${1:unsigned}>(${2:expr})${3}
 # dynamic
-snippet dca
+snippet dca "dynamic_cast"
 	dynamic_cast<${1:unsigned}>(${2:expr})${3}
 # reinterpret
-snippet rca
+snippet rca "reinterpret_cast"
 	reinterpret_cast<${1:unsigned}>(${2:expr})${3}
 # const
-snippet cca
+snippet cca "const cast"
 	const_cast<${1:unsigned}>(${2:expr})${3}
 ## Iteration
 # for i
@@ -192,28 +196,28 @@ snippet fori
 	}
 
 # foreach
-snippet fore
+snippet fore "foreach"
 	for (${1:auto} ${2:i} : ${3:container}) {
 		${4}
 	}
 # iterator
-snippet iter
+snippet iter "iterator"
 	for (${1:std::vector}<${2:type}>::${3:const_iterator} ${4:i} = ${5:container}.begin(); $4 != $5.end(); ++$4) {
 		${6}
 	}
 
 # auto iterator
-snippet itera
+snippet itera "auto iterator"
 	for (auto ${1:i} = ${2:container}.begin(); $1 != $2.end(); ++$1) {
 		${3:std::cout << *$1 << std::endl;}
 	}
 ##
 ## Lambdas
-# lamda (one line)
-snippet ld
+# lambda (one line)
+snippet ld "lambda (one line)"
 	[${1}](${2}){${3}};
 # lambda (multi-line)
-snippet lld
+snippet lld "lambda (multi-line)"
 	[${1}](${2}){
 		${3}
 	};
