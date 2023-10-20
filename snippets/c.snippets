@@ -17,10 +17,10 @@ snippet mainn
 snippet inc
 	#include <${1:stdio}.h>
 # #include "..."
-snippet Inc
+snippet Inc "include class header"
 	#include "${1:`vim_snippets#Filename("$1.h")`}"
 # ifndef...define...endif
-snippet ndef
+snippet ndef "ifndef...define...endif"
 	#ifndef $1
 	#define ${1:SYMBOL} ${2:value}
 	#endif /* ifndef $1 */
@@ -38,7 +38,7 @@ snippet #if
 		${0:${VISUAL}}
 	#endif
 # header include guard
-snippet once
+snippet once "header include guard"
 	#ifndef ${1:`toupper(vim_snippets#Filename('$1_H', 'UNTITLED_H'))`}
 
 	#define $1
@@ -47,7 +47,7 @@ snippet once
 
 	#endif /* end of include guard: $1 */
 # Disable C++ name mangling in C headers
-snippet nocxx
+snippet nocxx "Disable C++ name mangling in C headers"
 	#ifdef __cplusplus
 	extern "C" {
 	#endif
@@ -96,7 +96,7 @@ snippet switch
 			${6}
 	}
 # switch without default
-snippet switchndef
+snippet switchndef "switch without default"
 	switch (${1:/* variable */}) {
 		case ${2:/* variable case */}:
 			${3}
@@ -229,10 +229,10 @@ snippet fund
 ##
 ## Types
 # typedef
-snippet td
+snippet td "typedef"
 	typedef ${1:int} ${2:MyCustomType};
 # struct
-snippet st
+snippet st "struct"
 	/*! \struct $1
 	 *  \brief ${3:Brief struct description}
 	 *
@@ -242,7 +242,7 @@ snippet st
 		${2:Data} /*!< ${4:Description} */
 	}${5: /* optional variable list */};
 # typedef struct
-snippet tds
+snippet tds "typedef struct"
 	/*! \struct $2
 	 *  \brief ${5:Brief struct description}
 	 *
@@ -259,7 +259,7 @@ snippet enum
 	 */
 	enum ${1:name} { ${0} };
 # typedef enum
-snippet tde
+snippet tde "typedef enum"
 	/*! \enum $2
 	 *
 	 *  ${4:Detailed description}
@@ -355,19 +355,19 @@ snippet anl
 	assert(${1:ptr} != NULL);
 
 ## Dynamic Allocation
-snippet mlc
+snippet mlc "malloc"
 	${1:ptr} = (${2:type}*) malloc(sizeof($2));
 
-snippet clc
+snippet clc "calloc"
 	${1:ptr} = (${2:type}*) calloc(${3:size}, sizeof($2));
 
-snippet rlc
+snippet rlc "realloc"
 	${1:ptr} = realloc($1, ${2:size} * sizeof(${3:type}));
 
-snippet mlcd
+snippet mlcd "malloc with var delcare"
 	${1:type} ${2:ptr} = ($1*) malloc(sizeof($1));
 
-snippet clcd
+snippet clcd "calloc with var declare"
 	${1:type} ${2:ptr} = ($1*) calloc(${3:size}, sizeof($1));
 
 snippet fre
