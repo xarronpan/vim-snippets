@@ -116,6 +116,19 @@ snippet cl
 	protected:
 		m_${5}; /*!< ${6:Member description} */
 	};
+
+snippet cpcon "copy constructor"
+		${1:`vim_snippets#Filename('$1', 'name')`}(const $1& ${2:other});
+
+snippet cpas "copy assignment"
+		${1:`vim_snippets#Filename('$1', 'name')`}& operator=(const $1& ${2:other});
+
+snippet mvcon "move constructor"
+		${1:`vim_snippets#Filename('$1', 'name')`}($1&& ${2:other});
+
+snippet mvas "move assignment"
+		${1:`vim_snippets#Filename('$1', 'name')`}& operator=($1&& ${2:other});
+
 # member function implementation
 snippet mfun
 	${4:void} ${1:`vim_snippets#Filename('$1', 'ClassName')`}::${2:memberFunction}(${3}) {
