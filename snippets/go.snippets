@@ -12,7 +12,7 @@ snippet vars "variables declaration"
 		${1} ${2} = ${3}
 	)
 
-snippet ap "append"
+snippet ap "append slice"
 	append(${1:slice}, ${0:value})
 
 snippet bl "bool"
@@ -31,7 +31,7 @@ snippet cs "case"
 	case ${1:value}:
 		${0:${VISUAL}}
 
-snippet co "constants with iota"
+snippet co "enum constants with iota"
 	const (
 		${1:NAME1} = iota
 		${0:NAME2}
@@ -117,13 +117,13 @@ snippet forr "for range loop"
 		${0:${VISUAL}}
 	}
 
-snippet fun "function"
+snippet fun "function/method"
 	func ${1:funcName}(${2}) ${3:error} {
 		${4}
 	}
 	${0}
 
-snippet fum "method"
+snippet fum "memeber function/method"
 	func (${1:receiver} ${2:type}) ${3:funcName}(${4}) ${5:error} {
 		${6}
 	}
