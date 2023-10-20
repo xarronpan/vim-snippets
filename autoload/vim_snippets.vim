@@ -19,6 +19,33 @@ fun! vim_snippets#Filename(...)
   endif
 endf
 
+fun! vim_snippets#FilenameMixedCase(...)
+  let template = get(a:000, 0, "$1")
+  let arg2 = get(a:000, 1, "")
+
+  let basename = expand('%:t:r')
+  let basename = s:mixedcase(basename)
+
+  if basename == ''
+    return arg2
+  else
+    return substitute(template, '$1', basename, 'g')
+  endif
+endf
+
+function! s:mixedcase(word)
+  return substitute(s:camelcase(a:word),'^.','\u&','')
+endfunction
+
+function! s:camelcase(word)
+  let word = substitute(a:word, '-', '_', 'g')
+  if word !~# '_' && word =~# '\l'
+    return substitute(word,'^.','\l&','')
+  else
+    return substitute(word,'\C\(_\)\=\(.\)','\=submatch(1)==""?tolower(submatch(2)) : toupper(submatch(2))','g')
+  endif
+endfunction
+
 " original code:
 " fun! Filename(...)
 "     let filename = expand('%:t:r')

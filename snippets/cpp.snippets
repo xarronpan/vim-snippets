@@ -11,9 +11,9 @@ snippet mainn
 ##
 ## Preprocessor
 # #include <...>
-snippet incc
+snippet incc "include cpp header"
 	#include <${1:iostream}>
-snippet binc
+snippet binc "include boost header"
 	#include <boost/${1:shared_ptr}.hpp>
 ##
 ## STL Collections
@@ -101,73 +101,46 @@ snippet mu
 ##
 ## Class
 # class
-snippet cl
-	/*! \class $1
-	 *  \brief ${3:Brief class description}
-	 *
-	 *  ${4:Detailed description}
-	 */
-	class ${1:`vim_snippets#Filename('$1', 'name')`}
-	{
+snippet cls "class"
+	class ${1:`vim_snippets#FilenameMixedCase('$1', 'name')`} {
 	public:
 		$1(${2});
 		virtual ~$1();
 
-	protected:
-		m_${5}; /*!< ${6:Member description} */
+	private:
+		${3}_;
 	};
 
 snippet cpcon "copy constructor"
-		${1:`vim_snippets#Filename('$1', 'name')`}(const $1& ${2:other});
+		${1:`vim_snippets#FilenameMixedCase('$1', 'name')`}(const $1& ${2:other});
 
 snippet cpas "copy assignment"
-		${1:`vim_snippets#Filename('$1', 'name')`}& operator=(const $1& ${2:other});
+		${1:`vim_snippets#FilenameMixedCase('$1', 'name')`}& operator=(const $1& ${2:other});
 
 snippet mvcon "move constructor"
-		${1:`vim_snippets#Filename('$1', 'name')`}($1&& ${2:other});
+		${1:`vim_snippets#FilenameMixedCase('$1', 'name')`}($1&& ${2:other});
 
 snippet mvas "move assignment"
-		${1:`vim_snippets#Filename('$1', 'name')`}& operator=($1&& ${2:other});
+		${1:`vim_snippets#FilenameMixedCase('$1', 'name')`}& operator=($1&& ${2:other});
 
 # member function implementation
-snippet mfun
-	${4:void} ${1:`vim_snippets#Filename('$1', 'ClassName')`}::${2:memberFunction}(${3}) {
+snippet mfun "member function/method implementation"
+	${4:void} ${1:`vim_snippets#FilenameMixedCase('$1', 'ClassName')`}::${2:memberFunction}(${3}) {
 		${0}
 	}
 # member function implementation without parameters
-snippet dmfun0
-	/*! \brief ${4:Brief function description here}
-	 *
-	 *  ${5:Detailed description}
-	 *
-	 * \return ${6:Return parameter description}
-	 */
-	${3:void} ${1:`vim_snippets#Filename('$1', 'ClassName')`}::${2:memberFunction}() {
+snippet dmfun0 "member function/method implementation without parameters"
+	${3:void} ${1:`vim_snippets#FilenameMixedCase('$1', 'ClassName')`}::${2:memberFunction}() {
 		${0}
 	}
 # member function implementation with one parameter
-snippet dmfun1
-	/*! \brief ${6:Brief function description here}
-	 *
-	 *  ${7:Detailed description}
-	 *
-	 * \param $4 ${8:Parameter description}
-	 * \return ${9:Return parameter description}
-	 */
-	${5:void} ${1:`vim_snippets#Filename('$1', 'ClassName')`}::${2:memberFunction}(${3:Type} ${4:Parameter}) {
+snippet dmfun1 "member function/method implementation with one parameter"
+	${5:void} ${1:`vim_snippets#FilenameMixedCase('$1', 'ClassName')`}::${2:memberFunction}(${3:Type} ${4:Parameter}) {
 		${0}
 	}
 # member function implementation with two parameter
-snippet dmfun2
-	/*! \brief ${8:Brief function description here}
-	 *
-	 *  ${9:Detailed description}
-	 *
-	 * \param $4 ${10:Parameter description}
-	 * \param $6 ${11:Parameter description}
-	 * \return ${12:Return parameter description}
-	 */
-	${7:void} ${1:`vim_snippets#Filename('$1', 'ClassName')`}::${2:memberFunction}(${3:Type} ${4:Parameter},${5:Type} ${6:Parameter}) {
+snippet dmfun2 "member function/method implementation with two parameter"
+	${7:void} ${1:`vim_snippets#FilenameMixedCase('$1', 'ClassName')`}::${2:memberFunction}(${3:Type} ${4:Parameter},${5:Type} ${6:Parameter}) {
 		${0}
 	}
 # namespace
@@ -203,7 +176,7 @@ snippet cca "const cast"
 	const_cast<${1:unsigned}>(${2:expr})${3}
 ## Iteration
 # for i
-snippet fori
+snippet fori "for i"
 	for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++}) {
 		${4}
 	}
@@ -235,7 +208,7 @@ snippet lld "lambda (multi-line)"
 		${3}
 	};
 # snippets exception
-snippet try
+snippet try "try ... catch"
 	try {
 
 	}catch(${1}) {
