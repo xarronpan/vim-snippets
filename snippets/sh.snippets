@@ -9,47 +9,47 @@ snippet s#!
 snippet safe
 	set -eu
 
-snippet bash
+snippet bash "bash header"
 	#!/usr/bin/env bash
 
-snippet sbash
+snippet sbash "bash header"
 	#!/usr/bin/env bash
 	set -euo pipefail
 	IFS=$'\n\t'
 
-snippet if
+snippet if-sh "if ... then"
 	if [ $1 ]; then
 		${0:${VISUAL}}
 	fi
-snippet elif
+snippet elif-sh "elif ..."
 	elif [ $1 ]; then
 		${0:${VISUAL}}
-snippet for
+snippet for-sh "for loop"
 	for (( ${2:i} = 0; $2 < ${1:count}; $2++ )); do
 		${0:${VISUAL}}
 	done
-snippet fori
+snippet fori-sh "for in done"
 	for ${1:needle} in ${2:haystack} ; do
 		${0:${VISUAL}}
 	done
-snippet wh
+snippet wh-sh "while"
 	while [ $1 ]; do
 		${0:${VISUAL}}
 	done
-snippet wht
+snippet wht-sh "while true"
 	while true; do
 		${0:${VISUAL}}
 	done
-snippet until
+snippet until-sh "until"
 	until [ $1 ]; do
 		${0:${VISUAL}}
 	done
-snippet case
+snippet case-sh "case"
 	case ${1:word} in
 		${2:pattern})
 			${0};;
 	esac
-snippet go
+snippet go-sh "getopts"
 	while getopts '${1:o}' ${2:opts}
 	do
 		case $$2 in
@@ -58,10 +58,10 @@ snippet go
 		esac
 	done
 # Set SCRIPT_DIR variable to directory script is located.
-snippet sdir
+snippet sdir "get script running dir"
 	SCRIPT_DIR="\$( cd "\$( dirname "\${BASH_SOURCE[0]}" )" && pwd )"
 # getopt
-snippet getopt
+snippet getopt "getopts"
 	__ScriptVersion="${1:version}"
 
 	#===  FUNCTION  ================================================================
@@ -96,15 +96,15 @@ snippet getopt
 	  esac    # --- end of case ---
 	done
 	shift \$(($OPTIND-1))
-snippet root
+snippet root-sh "set script to root privilege"
 	if [ \$(id -u) -ne 0 ]; then exec sudo \$0; fi
 
-snippet fun-sh
+snippet fun-sh "function"
 	${1:function_name}() {
 		$0
 	}
 
-snippet fun
+snippet fun "function"
 	function ${1:function_name}() {
 		$0
 	}
